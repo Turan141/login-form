@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import "./App.css"
+import React, { useEffect, useState } from 'react'
+import './App.css'
 
 
 
@@ -15,7 +15,7 @@ const GreetingWindow = ({ email }) => {
 
 const RegisterWindow = ({ onChange, loginFn }) => {
     let local = localStorage
-    let errorText = document.querySelector(".error")
+    let errorText = document.querySelector('.error')
     const logPass = {
         login: 'admin',
         pass: 'admin'
@@ -38,7 +38,7 @@ const RegisterWindow = ({ onChange, loginFn }) => {
                 setLoggedIn()
 
             } else {
-                errorText.style.opacity = "100%"
+                errorText.style.opacity = '100%'
             }
         }
     }
