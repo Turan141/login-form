@@ -136,21 +136,14 @@ h1 {
   border: none;
   padding: 5px;
   margin: 5px;
+  border-radius: 10px;
 }
 
 .btn:hover {
   cursor: pointer;
 }
 
-.hidden {
+.error{
   opacity: 0;
-  display: none;
-}
-
-.modal {
-  display: none;
-}
-
-.visible {
-  display: block;
+  color:white;
 }
