@@ -28,10 +28,11 @@ h1 {
 #wrapper {
   position: absolute;
   width: 320px;
-  left: 50%;
+  left: 15%;
   margin-left: -160px;
-  top: 50%;
+  top: 20%;
   margin-top: -75px;
+  color:white;
 }
 
 /* === Sign in Form === */
@@ -40,6 +41,8 @@ h1 {
   width: 300px;
   border-radius: 8px;
   position: relative;
+  color:white;
+
 }
 #signin::before {
   display: block;
@@ -64,7 +67,7 @@ h1 {
 #signin button[type="submit"] {
   background: rgb(28, 30, 33);
   box-shadow: inset -100px -100px 0 rgb(28, 30, 33); /*Prevent yellow autofill color*/
-  color: rgb(52, 56, 61);
+  color:white;
 }
 #signin input[type="text"],
 #signin input[type="password"] {
@@ -77,17 +80,18 @@ h1 {
   top: -2px;
   padding: 0 0 0 20px;
   font-weight: 700;
+  color:white;
 }
 #signin input[type="text"]:focus,
 #signin input[type="password"]:focus {
-  color: rgb(255, 255, 255);
+  color:white;
 }
 #signin button[type="submit"] {
   display: block;
   position: absolute;
   width: 52px;
   height: 52px;
-  color: rgb(52, 56, 61);
+  color:white;
   border-radius: 50px;
   outline: 0;
   z-index: 2;
@@ -146,4 +150,37 @@ h1 {
 .error{
   opacity: 0;
   color:white;
+}
+
+.userListDiv{
+  position: absolute;
+  left: 30%;
+  top: 5%;
+  border: 5px solid gray;
+  padding: 10px;
+  background-color: navajowhite;
+  font-size: 18px;
+  text-align: center;
+}
+
+.userListDiv td{
+  padding: 10px;
+  border: 2px solid black;
+}
+
+.tableHeader{
+  font-size: 25px;
+  font-weight: bold;
+  border: 2px solid black;
+}
+
+.redactBtn{
+  position: relative;
+  top: 5%;
+  padding: 10px;
+  background-color: aliceblue;
+  border: none;
+}
+.redactBtn:hover{
+  cursor: pointer;
 }
