@@ -201,14 +201,12 @@ h1 {
 
 .saveEditBtn{
   position: relative;
-  display: none;
   background-color: orange;
   border-radius: 10px;
   border-color:orange;
   padding: 8px;
   border: none;
 }
-
-.show{
-  display: block;
+.saveEditBtn:hover{
+  cursor: pointer;
 }
