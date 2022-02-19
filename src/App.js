@@ -82,6 +82,18 @@ function App() {
     const [userName] = useState(localStorage.getItem('admin'))
     const [isEditMode, setEditMode] = useState(false)
 
+    let inputs=[]
+
+    function updateJSON() {
+        userJSON[0].name = inputs[0].value
+        console.log(userJSON)
+
+    }
+
+    function setValue() {
+return
+    }
+
     function makeInput(e) {
         e.target.disabled = true
         setEditMode(true)
@@ -89,13 +101,13 @@ function App() {
         btn.forEach((e) =>{
            e.classList.add('show')
         })
-
-
         e.target.parentNode.parentNode.childNodes[0].innerHTML =
             `<input value=${e.target.parentNode.parentNode.childNodes[0].innerHTML}>`
         e.target.parentNode.parentNode.childNodes[1].innerHTML =
             `<input value=${e.target.parentNode.parentNode.childNodes[1].innerHTML}>`
-        console.log(e.target)
+         inputs = document.getElementsByTagName("input");
+        console.log(inputs[0].value)
+
     }
 
     let isLoggenIn = Boolean(userName)
@@ -107,7 +119,7 @@ function App() {
                 <td>{elem.username}</td>
                 <td className="idInput">{elem.id}</td>
                 {isLoggenIn ?<td><button disabled={false} onClick={makeInput} className="editBtn">Edit</button> </td>: null}
-                {isEditMode ? <td><button className="saveEditBtn hidden">Save</button></td> : null}
+                {isEditMode ? <td><button onClick={updateJSON} className="saveEditBtn">Save</button></td> : null}
 
             </tr>)
      })
@@ -118,7 +130,6 @@ function App() {
                     <td >Full Name</td>
                     <td>Username</td>
                     <td>ID</td>
-                    {isLoggenIn ? <td>Edit</td> : null}
                 </tr>
             </thead>
           <tbody>
