@@ -1,16 +1,18 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, {useState, useRef } from "react";
 import "./App.css";
+import userJSON from './data.json'
 
 const GreetingWindow = ({ userName }) => {
     const logOutFn = () => {
         localStorage.removeItem('admin');
         return window.location.reload();
+
     }
     return (
         <>
             <div className='greetings'>
                 <h1>Hello {userName}</h1>
-                <button onClick={logOutFn}>LogOut</button>
+                <button className="logoutbtn" onClick={logOutFn}>LogOut</button>
             </div>
         </>
     )
@@ -77,50 +79,51 @@ const RegisterWindow = () => {
 }
 
 function App() {
-    const [userName, setUsername] = useState(localStorage.getItem('admin'))
+    const [userName] = useState(localStorage.getItem('admin'))
+    const [isEditMode, setEditMode] = useState(false)
 
-    // Ново-добавленные функции
+    function makeInput(e) {
+        e.target.disabled = true
+        setEditMode(true)
+        let btn = document.querySelectorAll('.saveEditBtn')
+        btn.forEach((e) =>{
+           e.classList.add('show')
+        })
 
-    const [data, dataSet] = useState([])
+
+        e.target.parentNode.parentNode.childNodes[0].innerHTML =
+            `<input value=${e.target.parentNode.parentNode.childNodes[0].innerHTML}>`
+        e.target.parentNode.parentNode.childNodes[1].innerHTML =
+            `<input value=${e.target.parentNode.parentNode.childNodes[1].innerHTML}>`
+        console.log(e.target)
+    }
 
     let isLoggenIn = Boolean(userName)
-    useEffect(() => {
-        const url = "https://jsonplaceholder.typicode.com/users";
-        (async function fetchData() {
-            try {
-                const response = await fetch(url);
-                const json = await response.json();
-                dataSet(json);
-            } catch (error) {
-                console.log("error", error);
-            }
-        })()
-    }, [])
 
-     const userTd = data.map((elem) =>{
-         return(
-         <tr>
-             <td key={elem.name}>{elem.name}</td>
-             <td key={elem.address.city}>{elem.address.city}</td>
-             <td key={elem.id}>{elem.id}</td>
-             {isLoggenIn ? <button key={elem.email} className="redactBtn">Редактировать</button> : null}
-         </tr>)
+    let userData = userJSON.map((elem) =>{
+        return(
+            <tr key={elem.name}>
+                <td>{elem.name}</td>
+                <td>{elem.username}</td>
+                <td className="idInput">{elem.id}</td>
+                {isLoggenIn ?<td><button disabled={false} onClick={makeInput} className="editBtn">Edit</button> </td>: null}
+                {isEditMode ? <td><button className="saveEditBtn hidden">Save</button></td> : null}
+
+            </tr>)
      })
-
-// ---------------------------------------
-
-
     const userListTable = <div className="userListDiv">
         <table>
-            <tbody>
-            <tr className="tableHeader">
-                <td >Имя</td>
-                <td>Город</td>
-                <td>ID</td>
-                {isLoggenIn ? <td>Redact</td> : null}
-            </tr>
-            {userTd}
-            </tbody>
+            <thead>
+                <tr className="tableHeader">
+                    <td >Full Name</td>
+                    <td>Username</td>
+                    <td>ID</td>
+                    {isLoggenIn ? <td>Edit</td> : null}
+                </tr>
+            </thead>
+          <tbody>
+            {userData}
+          </tbody>
         </table>
     </div>
     return (
@@ -129,12 +132,12 @@ function App() {
                 {isLoggenIn ? (
                     <>
                     <GreetingWindow userName={userName} />
-                        {userListTable}
+                    {userListTable}
                     </>
                 ) : (
                     <>
                     <RegisterWindow value={userName} />
-                         {userListTable}
+                    {userListTable}
                     </>
                 )}
             </div>
