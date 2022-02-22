@@ -1,6 +1,5 @@
-import React, {useState, useRef } from "react";
+import React, {useState, useRef, useEffect } from "react";
 import "./App.css";
-import userJSON from './data.json'
 
 const GreetingWindow = ({ userName }) => {
     const logOutFn = () => {
@@ -81,19 +80,40 @@ const RegisterWindow = () => {
 function App() {
     const [userName] = useState(localStorage.getItem('admin'))
     const [isEditMode, setEditMode] = useState(false)
+      let userJSON =   [
+        {
+            "id": 1,
+            "name": "Leanne Graham",
+            "username": "Bret",
+            "email": "Sincere@april.biz"
+        },
+            {
+                "id": 2,
+                "name": "Ervin Howell",
+                "username": "Antonette"
+            },
+            {
+                "id": 3,
+                "name": "Clementine Turan",
+                "username": "Samantha",
+                "email": "Nathan@yesenia.net"
+            }
+        ];
 
-    let inputs=[]
-
-    function updateJSON() {
-        userJSON[0].name = inputs[0].value
-        console.log(userJSON)
-
+    function updateJson(userJSON){
+        let inputs = document.getElementsByTagName('input')
+        for(let i = 0; i < inputs.length; i++){
+            let userName = inputs[i].defaultValue
+            for(let j = 0; j < i; j++){
+                if(userName === userJSON[j].username){
+                     userJSON[j].username = inputs[i].value
+                    setEditMode(false)
+                    return
+                }
+            }
+            inputs[i].parentNode.innerHTML = `<p>${inputs[i].value}</p>`
+        }
     }
-
-    function setValue() {
-return
-    }
-
     function makeInput(e) {
         e.target.disabled = true
         setEditMode(true)
@@ -105,12 +125,9 @@ return
             `<input value=${e.target.parentNode.parentNode.childNodes[0].innerHTML}>`
         e.target.parentNode.parentNode.childNodes[1].innerHTML =
             `<input value=${e.target.parentNode.parentNode.childNodes[1].innerHTML}>`
-         inputs = document.getElementsByTagName("input");
-        console.log(inputs[0].value)
-
     }
 
-    let isLoggenIn = Boolean(userName)
+    let isLoggedIn = Boolean(userName)
 
     let userData = userJSON.map((elem) =>{
         return(
@@ -118,9 +135,8 @@ return
                 <td>{elem.name}</td>
                 <td>{elem.username}</td>
                 <td className="idInput">{elem.id}</td>
-                {isLoggenIn ?<td><button disabled={false} onClick={makeInput} className="editBtn">Edit</button> </td>: null}
-                {isEditMode ? <td><button onClick={updateJSON} className="saveEditBtn">Save</button></td> : null}
-
+                {isLoggedIn ?<td><button disabled={false} onClick={makeInput} className="editBtn">Edit</button> </td> : null}
+                {isEditMode ? <td><button onClick={()=>updateJson(userJSON)} className="saveEditBtn">Save</button></td> : null}
             </tr>)
      })
     const userListTable = <div className="userListDiv">
@@ -140,7 +156,7 @@ return
     return (
         <>
             <div className='appmain'>
-                {isLoggenIn ? (
+                {isLoggedIn ? (
                     <>
                     <GreetingWindow userName={userName} />
                     {userListTable}
