@@ -26,7 +26,6 @@ const RegisterWindow = () => {
     const inputPasswordRef = useRef()
     const loginAsAdmin = (e) => {
         e.preventDefault()
-        console.log(inputLoginRef)
         if (!inputLoginRef.current.value || !inputPasswordRef.current.value) {
             return console.log('empty field')
         } else if (
@@ -102,7 +101,6 @@ function App() {
 
     function updateJson(){
         let inputs = document.querySelectorAll(".input")
-        console.log(inputs)
         for(let i = 0; i < inputs.length; i++){
             let userName = inputs[i].defaultValue
             for(let j = 0; j < i; j++){
@@ -110,6 +108,7 @@ function App() {
                      userJSON[j].username = inputs[i].value
                 }
                 inputs.forEach((elem) =>{ elem.parentNode.innerHTML = `<p>${elem.value}</p>`} )}
+            setEditMode(false)
         }
 
     }
@@ -134,7 +133,7 @@ function App() {
                 <td>{elem.name}</td>
                 <td>{elem.username}</td>
                 <td className="idInput">{elem.id}</td>
-                {isLoggedIn ?<td><button disabled={false} onClick={makeInput} className="editBtn">Edit</button> </td> : null}
+                {isLoggedIn ?<td><button disabled={(isEditMode)} onClick={makeInput} className="editBtn">Edit</button> </td> : null}
             </tr>)
      })
     const userListTable = <div className="userListDiv">
