@@ -20,7 +20,7 @@ body {
   background: rgb(52, 56, 61);
 }
 h1 {
-  color: rgb(255, 255, 255);
+  color: white;
   margin: 20px auto 0;
   width: 200px;
   text-align: center;
@@ -41,8 +41,9 @@ h1 {
   width: 300px;
   border-radius: 8px;
   position: relative;
-  color:white;
-
+  color: white;
+  margin-left: 50px;
+  left:-30px;
 }
 #signin::before {
   display: block;
@@ -53,20 +54,23 @@ h1 {
   top: 44px;
   margin-left: 20px;
   z-index: 1;
+  color: white;
 }
 #signin input:first-of-type {
+  color:white;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
 }
 #signin input:last-of-type {
+  color:white;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
 }
 #signin input[type="text"],
 #signin input[type="password"],
 #signin button[type="submit"] {
-  background: rgb(28, 30, 33);
-  box-shadow: inset -100px -100px 0 rgb(28, 30, 33); /*Prevent yellow autofill color*/
+  background: gray;
+  box-shadow: inset -100px -100px 0 gray; /*Prevent yellow autofill color*/
   color:white;
 }
 #signin input[type="text"],
