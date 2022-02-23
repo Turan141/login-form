@@ -14,11 +14,13 @@ export default function Edit(){
   }
   return(
     <>
-      <div>{element}</div>
-      {inputType==='text' ?
-        <button onClick={setText}>Edit</button>
-        :
-        <button onClick={setInput}>Confirm</button>}
+      <div className="typeFieldMain">
+        <div >{element}</div>
+        {inputType==='text' ?
+          <button onClick={setText}>Edit</button>
+          :
+          <button onClick={setInput}>Confirm</button>}
+      </div>
     </>
   )
 }
