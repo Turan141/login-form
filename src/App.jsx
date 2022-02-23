@@ -17,7 +17,8 @@ function App() {
         </Link>
         <Link className="navbarElem" to="/edit">
                         Edit
-        </Link>                </div>
+        </Link>
+      </div>
       <Routes>
         <Route path="/edit" element={<Edit/>}/>
         <Route path="/Admin" element={<MainWindow/>}/>
