@@ -1,39 +1,52 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 
 
-const Content = (props) => {
+const Content = ( { changeFn, text } ) => {
   return(
     <>
-      <div>Plain Text</div>
-      <button onClick={props.setInput}>Save</button>
+      <div>{text}</div>
+      <button onClick={changeFn}>Save</button>
     </>
   )
 }
 
-const Form = (props) => {
+const Form = ( { changeFn,inputRef,setContent } ) => {
+
+  const applyChangefn = () => {
+    setContent(inputRef.current.value)
+    changeFn()
+  }
+
   return(
     <>
-      <input/>
-      <button onClick={()=>{props.setInput}}>Edit</button>
+      <input ref={inputRef}/>
+      <button onClick={applyChangefn}>Edit</button>
     </>
   )
 }
 
 function Edit(){
   const [ isEditing, setEditing ] = useState(false)
+  const [ textContent, setContent ] = useState('plain text')
+
+  let inputRef = useRef()
 
   const setInput = () => {
-    console.log('true')
-    setEditing(isEditing => !isEditing)
+    setEditing(!isEditing)
   }
+
 
   return(
     <>
       <div className="typeFieldMain">
         {isEditing ?
-          <Form type={setInput}/>
+          <Form changeFn={setInput}
+            text={textContent}
+            inputRef={inputRef}
+            setContent={setContent}/>
           :
-          <Content type={setInput}/>}
+          <Content changeFn={setInput}
+            text={textContent}/>}
       </div>
     </>
   )
