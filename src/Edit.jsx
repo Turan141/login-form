@@ -5,7 +5,7 @@ export default function Edit(){
   const [ element, setElement ] = useState('текст')
   const [ inputType, setType ] = useState('text')
   const setInput = () =>{
-    setElement(<div/>)
+    setElement(<div />)
     setType('text')
   }
   const setText = ()=>{
