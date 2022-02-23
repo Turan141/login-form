@@ -1,16 +1,29 @@
 import React, { useState, useRef } from 'react'
 
 
-const Content = ( { changeFn, text } ) => {
+const Section = ({ text, changeFn }) => {
   return(
     <>
-      <div>{text}</div>
-      <button onClick={changeFn}>Save</button>
+      <Content text={text} changeFn={changeFn}/>
+      <Content text={text} changeFn={changeFn}/>
+      <Content text={text} changeFn={changeFn}/>
     </>
   )
 }
 
-const Form = ( { changeFn,inputRef,setContent } ) => {
+
+const Content = ({ changeFn, text }) => {
+  return(
+    <>
+      <div>{text}</div>
+      <button onClick={changeFn}>Edit</button>
+    </>
+  )
+}
+
+const Form = ({ changeFn, setContent }) => {
+
+  let inputRef = useRef()
 
   const applyChangefn = () => {
     setContent(inputRef.current.value)
@@ -20,21 +33,19 @@ const Form = ( { changeFn,inputRef,setContent } ) => {
   return(
     <>
       <input ref={inputRef}/>
-      <button onClick={applyChangefn}>Edit</button>
+      <button onClick={applyChangefn}>Save</button>
     </>
   )
 }
 
 function Edit(){
+
   const [ isEditing, setEditing ] = useState(false)
   const [ textContent, setContent ] = useState('plain text')
-
-  let inputRef = useRef()
 
   const setInput = () => {
     setEditing(!isEditing)
   }
-
 
   return(
     <>
@@ -42,15 +53,15 @@ function Edit(){
         {isEditing ?
           <Form changeFn={setInput}
             text={textContent}
-            inputRef={inputRef}
             setContent={setContent}/>
           :
-          <Content changeFn={setInput}
-            text={textContent}/>}
+          <Section text={textContent}
+            changeFn={setInput}/>
+        }
       </div>
     </>
   )
 }
 
 
-export { Edit, Content, Form }
+export { Edit }
