@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import './App.scss'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import Edit from './Edit'
+import { Edit } from './Edit'
 import MainWindow from './MainWindow'
 
 

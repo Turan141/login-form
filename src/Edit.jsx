@@ -1,26 +1,43 @@
 import React, { useState } from 'react'
 
 
-export default function Edit(){
-  const [ element, setElement ] = useState('текст')
-  const [ inputType, setType ] = useState('text')
-  const setInput = () =>{
-    setElement(<div />)
-    setType('text')
+const Content = (props) => {
+  return(
+    <>
+      <div>Plain Text</div>
+      <button onClick={props.setInput}>Save</button>
+    </>
+  )
+}
+
+const Form = (props) => {
+  return(
+    <>
+      <input/>
+      <button onClick={()=>{props.setInput}}>Edit</button>
+    </>
+  )
+}
+
+function Edit(){
+  const [ isEditing, setEditing ] = useState(false)
+
+  const setInput = () => {
+    console.log('true')
+    setEditing(isEditing => !isEditing)
   }
-  const setText = ()=>{
-    setElement(<input />)
-    setType('input')
-  }
+
   return(
     <>
       <div className="typeFieldMain">
-        <div >{element}</div>
-        {inputType==='text' ?
-          <button onClick={setText}>Edit</button>
+        {isEditing ?
+          <Form type={setInput}/>
           :
-          <button onClick={setInput}>Confirm</button>}
+          <Content type={setInput}/>}
       </div>
     </>
   )
 }
+
+
+export { Edit, Content, Form }
