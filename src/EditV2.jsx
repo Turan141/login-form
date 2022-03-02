@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 
 
 const Section = () => {
@@ -17,7 +17,7 @@ const Content = () => {
     return(
       <div className='userDiv'>
         <div>{textContent}</div>
-        <button onClick={function setterFn(){setEdit(true) }}>Edit</button>
+        <button onClick={function setterFn(){ setEdit(true) }}>Edit</button>
       </div>
     )
   }
@@ -30,7 +30,7 @@ const Content = () => {
     }
     return(
       <>
-        <input className="input"/><button onClick={confirmName}>Confirm</button>
+        <input className="input"/><button onClick={ confirmName }>Confirm</button>
       </>
     )
   }
