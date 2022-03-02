@@ -16,8 +16,8 @@ const Content = () => {
   const UserNameShow = ({ textContent }) => {
     return(
       <div className='userDiv'>
-        <div>{textContent}</div>
-        <button onClick={function setterFn(){ setEdit(true) }}>Edit</button>
+        <div>{ textContent }</div>
+        <button onClick={function setterFn(){setEdit(true)}}>Edit</button>
       </div>
     )
   }
