@@ -37,7 +37,10 @@ const Content = () => {
 
   return(
     <>
-      {!isEdit ? <UserNameShow textContent={textContent}/> : <EditNameShow setContent={setContent} setEdit={setEdit}/>}
+      {!isEdit ?
+        <UserNameShow textContent={textContent}/>
+        :
+        <EditNameShow setContent={setContent} setEdit={setEdit}/>}
     </>
   )
 }
