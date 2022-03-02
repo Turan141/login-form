@@ -13,7 +13,6 @@ const Section = () => {
 const Content = () => {
   const [ textContent, setContent ] = useState('User')
   const [ isEdit, setEdit ] = useState(false)
-  const [ isDisabled, setDisabled ] = useState(false)
   const UserNameShow = ({ textContent }) => {
     return(
       <div className='userDiv'>
