@@ -147,13 +147,13 @@ h1 {
   right: -24px;
   border: 6px solid rgb(52, 56, 61);
   font-size: 25px;
-  text-indent: 0px;
+  text-indent: 0;
   padding-left: 9px;
   padding-bottom: 3px;
   text-align: center;
 }
 #signin button[type="submit"]:hover {
-  color: rgb(0, 126, 165);
+  color: rgb(0, 126, 164);
   text-shadow: 0 0 10px rgb(0, 126, 165);
   cursor: pointer;
 }
@@ -303,4 +303,55 @@ border-radius: 7px;
   align-content: center;
   align-items: center;
   height: 60px;
+}
+
+.typeFieldMain{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  font-size: 20px;
+  border: 2px solid #e2e2e2;
+
+  button{
+    margin-left: 30px;
+    height: 30px;
+    width: 69px;
+    font-size: 17px;
+  }
+}
+.userDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80rem;
+  margin: 50px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+.userLi{;
+  flex-wrap: wrap;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 15rem;
+  margin: 20px;
+  border: 1px solid #e2e2e2;
+  border-radius: 20px;
+  padding: 10px;
+  h2{
+    font-size: 15px;
+    margin: 10px;
+  }
+  button{
+    transition: 0.5s ease;
+    padding: 10px;
+    width: 40%;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 2px solid #e2e2e2;
+    &:hover{
+      background-color: red;
+      border-color: black;
+    }
+  }
 }
