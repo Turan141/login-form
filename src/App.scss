@@ -319,3 +319,41 @@ border-radius: 7px;
     font-size: 17px;
   }
 }
+.userDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80rem;
+  margin: 50px;
+  list-style: none;
+  flex-wrap: wrap;
+
+}
+.userLi{;
+  flex-wrap: wrap;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 15rem;
+  margin: 20px;
+  border: 1px solid #e2e2e2;
+  border-radius: 20px;
+  padding: 10px;
+  h2{
+    font-size: 15px;
+    margin: 10px;
+  }
+  button{
+    transition: 0.5s ease;
+    border: none;
+    padding: 10px;
+    width: 40%;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 2px solid #e2e2e2;
+    &:hover{
+      background-color: red;
+      border-color: black;
+    }
+  }
+}
